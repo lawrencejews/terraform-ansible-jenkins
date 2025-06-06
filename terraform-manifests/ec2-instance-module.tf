@@ -10,6 +10,13 @@ module "ec2_private" {
   instance_type          = var.instance_type
   key_name               = var.instance_keypair
   user_data = file("${path.module}/app1-install.sh")
+  
+# resource "null" "grafana install"{
+#   depends_on = [aws_instance.main]
+#   provisioner "local-exec"{
+#     command = "ansible-playbook -i aws_hosts --key-file KEY_LOCATION playbooks/grafana.yml "
+#   }
+#   }
 
 
 # Changes as of Module version UPGRADE from 2.17.0 to 5.5.0
